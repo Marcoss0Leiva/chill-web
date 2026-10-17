@@ -538,23 +538,23 @@ const BRANDS = [
 
 /* price / promo en pesos (número) · stock en unidades (número) · null = a consultar */
 const PRODUCTS = [
-  { id: 'elfbar-40k', brand: 'elfbar', name: 'Elf Bar 40K', img: 'img/elfbar-40k.webp', w: 900, h: 587, rank: 1,
+  { id: 'elfbar-40k', brand: 'elfbar', name: 'Elf Bar 40K', img: 'elfbar-40k.webp', w: 900, h: 587, rank: 1,
     price: null, promo: null, stock: null, flavors: [], rating: null, isNew: false,
     desc: 'Vaper Elf Bar de la línea 40K. Escribinos y te contamos qué sabores hay disponibles hoy.',
     specs: [['Marca', 'Elf Bar'], ['Modelo', '40K']] },
-  { id: 'ignite-v55', brand: 'ignite', name: 'Ignite V55', img: 'img/ignite-v55.webp', w: 805, h: 900, rank: 2,
+  { id: 'ignite-v55', brand: 'ignite', name: 'Ignite V55', img: 'ignite-v55.webp', w: 805, h: 900, rank: 2,
     price: null, promo: null, stock: null, flavors: [], rating: null, isNew: false,
     desc: 'Vaper Ignite modelo V55. Consultanos sabores y disponibilidad y te asesoramos para elegir.',
     specs: [['Marca', 'Ignite'], ['Modelo', 'V55']] },
-  { id: 'elfbar-trio', brand: 'elfbar', name: 'Elf Bar Trio', img: 'img/elfbar-trio.webp', w: 862, h: 900, rank: 3,
+  { id: 'elfbar-trio', brand: 'elfbar', name: 'Elf Bar Trio', img: 'elfbar-trio.webp', w: 862, h: 900, rank: 3,
     price: null, promo: null, stock: null, flavors: [], rating: null, isNew: false,
     desc: 'Vaper Elf Bar Trio. Pedinos los sabores que tenemos en stock y lo coordinamos por WhatsApp.',
     specs: [['Marca', 'Elf Bar'], ['Modelo', 'Trio']] },
-  { id: 'ignite-mix', brand: 'ignite', name: 'Ignite Mix', img: 'img/ignite-mix.webp', w: 900, h: 508, rank: 4,
+  { id: 'ignite-mix', brand: 'ignite', name: 'Ignite Mix', img: 'ignite-mix.webp', w: 900, h: 508, rank: 4,
     price: null, promo: null, stock: null, flavors: [], rating: null, isNew: false,
     desc: 'Línea Ignite en distintos colores y sabores. Preguntanos cuáles hay hoy y armamos tu pedido.',
     specs: [['Marca', 'Ignite'], ['Modelo', 'Mix']] },
-  { id: 'ignite', brand: 'ignite', name: 'Ignite', img: 'img/ignite.webp', w: 416, h: 900, rank: 5,
+  { id: 'ignite', brand: 'ignite', name: 'Ignite', img: 'ignite.webp', w: 416, h: 900, rank: 5,
     price: null, promo: null, stock: null, flavors: [], rating: null, isNew: false,
     desc: 'Vaper Ignite en negro. Consultanos sabores y disponibilidad.',
     specs: [['Marca', 'Ignite']] },
@@ -686,7 +686,7 @@ const visibleServices = () => SERVICES.filter(s => s.confirmed || CONFIG.showPen
 
 /* ---------------- header, overlays, footer ---------------- */
 function logoHTML(cls = 'logo') {
-  return `<a href="#inicio" class="${cls}" aria-label="${esc(CONFIG.brand)}, ir al inicio"><img src="img/logo.webp" alt="" width="399" height="329"></a>`;
+  return `<a href="#inicio" class="${cls}" aria-label="${esc(CONFIG.brand)}, ir al inicio"><img src="logo.webp" alt="" width="399" height="329"></a>`;
 }
 function headerHTML() {
   return `<div class="wrap hdr-row">
@@ -737,7 +737,7 @@ function overlaysHTML() {
 function footerHTML() {
   return `<div class="wrap">
     <div class="ftr-grid">
-      <div class="ftr-brand"><a href="#inicio" aria-label="${esc(CONFIG.brand)}, ir al inicio"><img src="img/logo.webp" alt="" width="399" height="329" loading="lazy"></a><p>${esc(CONFIG.description)}</p></div>
+      <div class="ftr-brand"><a href="#inicio" aria-label="${esc(CONFIG.brand)}, ir al inicio"><img src="logo.webp" alt="" width="399" height="329" loading="lazy"></a><p>${esc(CONFIG.description)}</p></div>
       <nav aria-labelledby="f-tienda"><h2 id="f-tienda">Tienda</h2><ul>
         <li><a href="#catalogo">Todos los productos</a></li>
         ${BRANDS.map(b => `<li><a href="#marca-${b.id}">${b.name}</a></li>`).join('')}
@@ -770,8 +770,8 @@ function viewHome() {
   return `
   <section class="hero" aria-labelledby="page-title">
     <picture class="hero-media">
-      <source media="(min-width: 1100px)" srcset="img/banner-desktop.webp" width="1920" height="720">
-      <img src="img/banner-movil.webp" width="900" height="1125" alt="Vapers Ignite de colores sobre una nube menta" fetchpriority="high">
+      <source media="(min-width: 1100px)" srcset="banner-desktop.webp" width="1920" height="720">
+      <img src="banner-movil.webp" width="900" height="1125" alt="Vapers Ignite de colores sobre una nube menta" fetchpriority="high">
     </picture>
     <div class="wrap">
       <div class="hero-copy">
@@ -1301,7 +1301,7 @@ function ageGate() {
   if (store.get('chill-age-ok', false)) return;
   const g = document.createElement('div'); g.className = 'age'; g.id = 'age';
   g.setAttribute('role', 'dialog'); g.setAttribute('aria-modal', 'true'); g.setAttribute('aria-labelledby', 'age-title');
-  g.innerHTML = `<div class="age-card"><img src="img/logo.webp" alt="${esc(CONFIG.brand)}" width="399" height="329"><h2 id="age-title">¿Tenés ${CONFIG.minAge} años o más?</h2><p>Esta tienda vende productos con nicotina y es solo para mayores de ${CONFIG.minAge}.</p><div class="age-actions"><button class="btn btn-primary btn-block" data-action="age-yes">Sí, tengo ${CONFIG.minAge} o más</button><button class="btn btn-ghost btn-block" data-action="age-no">No</button></div></div>`;
+  g.innerHTML = `<div class="age-card"><img src="logo.webp" alt="${esc(CONFIG.brand)}" width="399" height="329"><h2 id="age-title">¿Tenés ${CONFIG.minAge} años o más?</h2><p>Esta tienda vende productos con nicotina y es solo para mayores de ${CONFIG.minAge}.</p><div class="age-actions"><button class="btn btn-primary btn-block" data-action="age-yes">Sí, tengo ${CONFIG.minAge} o más</button><button class="btn btn-ghost btn-block" data-action="age-no">No</button></div></div>`;
   document.body.appendChild(g); document.documentElement.classList.add('lock');
   setTimeout(() => g.querySelector('button').focus(), 50);
 }
@@ -1346,7 +1346,7 @@ document.addEventListener('click', e => {
       break;
     }
     case 'age-yes': store.set('chill-age-ok', true); $('#age')?.remove(); document.documentElement.classList.remove('lock'); break;
-    case 'age-no': $('#age .age-card').innerHTML = `<img src="img/logo.webp" alt="${esc(CONFIG.brand)}" width="399" height="329"><h2 id="age-title">Volvé cuando tengas ${CONFIG.minAge}</h2><p>Esta tienda es solo para mayores de ${CONFIG.minAge} años.</p><div class="age-actions"><button class="btn btn-ghost btn-block" data-action="age-back">Me equivoqué, volver</button></div>`; setTimeout(() => $('#age [data-action="age-back"]')?.focus(), 30); break;
+    case 'age-no': $('#age .age-card').innerHTML = `<img src="logo.webp" alt="${esc(CONFIG.brand)}" width="399" height="329"><h2 id="age-title">Volvé cuando tengas ${CONFIG.minAge}</h2><p>Esta tienda es solo para mayores de ${CONFIG.minAge} años.</p><div class="age-actions"><button class="btn btn-ghost btn-block" data-action="age-back">Me equivoqué, volver</button></div>`; setTimeout(() => $('#age [data-action="age-back"]')?.focus(), 30); break;
     case 'age-back': $('#age')?.remove(); ageGate(); break;
   }
 });
